@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import Mock
 from stuff.test_data import Data
+from praktikum.burger import Burger
 from praktikum.ingredient_types import INGREDIENT_TYPE_SAUCE, INGREDIENT_TYPE_FILLING
 
 
@@ -18,6 +19,7 @@ def sauce_mock():
     sauce_mock.get_price.return_value = Data.SAUCE_1_PRICE
     sauce_mock.get_name.return_value = Data.SAUCE_1_NAME
     sauce_mock.get_type.return_value = INGREDIENT_TYPE_SAUCE
+    return sauce_mock
 
 
 @pytest.fixture
@@ -26,3 +28,13 @@ def filling_mock():
     filling_mock.get_price.return_value = Data.FILLING_1_PRICE
     filling_mock.get_name.return_value = Data.FILLING_1_NAME
     filling_mock.get_type.return_value = INGREDIENT_TYPE_FILLING
+    return filling_mock
+
+
+@pytest.fixture
+def burger_fixture(bun_mock, filling_mock, sauce_mock):
+    burger_fixture = Burger()
+    burger_fixture.set_buns(bun_mock)
+    burger_fixture.add_ingredient(filling_mock)
+    burger_fixture.add_ingredient(sauce_mock)
+    return burger_fixture
