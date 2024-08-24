@@ -1,4 +1,3 @@
-import pytest
 from praktikum.bun import Bun
 from stuff.test_data import Data
 
