@@ -2,6 +2,7 @@ import pytest
 from praktikum.bun import Bun
 from stuff.test_data import Data
 
+
 class TestBuns:
     def test_get_bun_name_success(self):
         fresh_bun = Bun(Data.BUN_NAME, Data.BUN_PRICE)
